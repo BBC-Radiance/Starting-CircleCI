@@ -9,7 +9,7 @@ workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
-     jobs:
+    jobs:
        one:
          docker:
            - image: circleci/ruby:2.4.1
