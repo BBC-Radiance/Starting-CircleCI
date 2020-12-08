@@ -1,40 +1,27 @@
-version: 2
+# Define the jobs we want to run for this project
 jobs:
-  one:
+  build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/<language>:<version TAG>
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - run: echo "A first hello"
-      - run: mkdir -p my_workspace
-      - run: echo "Trying out workspaces" > my_workspace/echo-output
-      - persist_to_workspace:
-          # 絶対パスまたは working_directory からの相対パスでなければなりません
-          root: my_workspace
-          # ルートからの相対パスでなければなりません
-          paths:
-            - echo-output
-  two:
+      - run: echo "this is the build job"
+  test:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/<language>:<version TAG>
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - run: echo "A more familiar hi"
-      - attach_workspace:
-          # 絶対パスであるか、working_directory からの相対パスでなければなりません
-          at: my_workspace
+      - run: echo "this is the test job"
 
-      - run: |
-          if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
-            echo "It worked!";
-          else
-            echo "Nope!"; exit 1
-          fi
+# Orchestrate our job run sequence
 workflows:
-  version: 2
-  one_and_two:
+  build_and_test:
     jobs:
-      - one
-      - two:
-          requires:
-            - one
+      - build
+      - test
