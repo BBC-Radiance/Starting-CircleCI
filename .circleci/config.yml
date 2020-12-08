@@ -1,7 +1,16 @@
-version: 2.1
-orbs:
-  node: circleci/node@3.0.0
+version: 2
+jobs:
+  hoge:
+    working_directory: ~/workspace
+    docker:
+      - image: node:9.4.0
+    steps:
+      - checkout
+      - run:
+          name: Echo
+          command: echo hello, world.
 workflows:
-  node-tests:
+  version: 2
+  fuga:
     jobs:
-      - node/test
+      - hoge
