@@ -32,7 +32,7 @@ jobs:
  
           command: |
  
-            echo 'export LT_USERNAME="{your_lambdatest_username}"' >> $BASH_ENV
+            echo 'export LT_USERNAME="tm-jw@outlook.jp"' >> $BASH_ENV
  
       - run:
  
@@ -40,7 +40,7 @@ jobs:
  
           command: |
  
-            echo 'export LT_ACCESS_KEY="{your_lambda_access_key}"' >> $BASH_ENV
+            echo 'export LT_ACCESS_KEY="bKFYihYobn8HVRCDl8JGHZfpfBTbGWE8R672oWqLzXS7ygrgxC"' >> $BASH_ENV
  
       - run: # Validating your above mentioned environment variables
  
