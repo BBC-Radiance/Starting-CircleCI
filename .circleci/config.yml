@@ -7,7 +7,7 @@ workflows:
       - lambdatest/with_tunnel:
           name: Chrome test
           tunnel_name: chrome
-          lambdatest_email: user@lambdatest.com
+          lambdatest_email: tm-jw@outlook.jp
           steps:
             - run:
                 command: |
@@ -17,7 +17,7 @@ workflows:
       - lambdatest/with_tunnel:
           name: Firefox test
           tunnel_name: firefox
-          lambdatest_email: user@lambdatest.com
+          lambdatest_email: tm-jw@outlook.jp
           steps:
             - run:
                 command: |
